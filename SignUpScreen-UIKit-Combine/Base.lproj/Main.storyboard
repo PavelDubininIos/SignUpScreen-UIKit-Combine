@@ -145,6 +145,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sign Up" id="U4a-V6-daA"/>
+                    <connections>
+                        <outlet property="agreeTermsSwitch" destination="dbR-7s-hXn" id="qc1-bQ-eJs"/>
+                        <outlet property="emailAddressField" destination="4de-lS-uiB" id="pAW-4S-Cfv"/>
+                        <outlet property="passwordConfirmationField" destination="HrS-M7-cDt" id="2rn-5x-nZZ"/>
+                        <outlet property="passwordField" destination="E6q-MS-7pj" id="blm-n8-ObX"/>
+                        <outlet property="signUpButton" destination="UsG-QA-7a2" id="A3d-BN-jqb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8PJ-k9-eSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
