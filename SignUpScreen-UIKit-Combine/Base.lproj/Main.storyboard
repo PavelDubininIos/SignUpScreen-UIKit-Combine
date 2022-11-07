@@ -29,6 +29,9 @@
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="emailDidChange:" destination="YDV-5H-dkg" eventType="editingDidEnd" id="ai5-AG-ZOC"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -50,6 +53,9 @@
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="passwordDidChange:" destination="YDV-5H-dkg" eventType="editingDidEnd" id="xLR-Wb-dai"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -71,6 +77,9 @@
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="passwordConfirmationDidChange:" destination="YDV-5H-dkg" eventType="editingDidEnd" id="q6V-6Y-9z4"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -100,6 +109,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dbR-7s-hXn">
                                                     <rect key="frame" x="291" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="agreeSwitchDidChange:" destination="YDV-5H-dkg" eventType="valueChanged" id="rhw-Rr-zEC"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
