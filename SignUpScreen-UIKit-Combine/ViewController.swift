@@ -17,6 +17,8 @@ class ViewController: UITableViewController {
     private var passwordConfirmationSubject = CurrentValueSubject<String, Never>("")
     private var agreeTermSubject = CurrentValueSubject<Bool, Never>(false)
     
+    private var cancellables: Set<AnyCancellable> = []
+    
     //MARK: - Outlets
     
     @IBOutlet weak var emailAddressField: UITextField!
@@ -29,7 +31,57 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        formIsValid
+            .assign(to: \.isEnabled, on: signUpButton)
+            .store(in: &cancellables)
+    }
+
+    private func emailIsValid(_ email: String) -> Bool {
+        email.contains("@") && email.contains(".")
+    }
+    
+
+    
+    //MARK: - Publishers
+    
+    private var formIsValid: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest(emailIsValid, passwordValidConfirmed)
+            .map {
+                $0.0 && $0.1
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var passwordValidConfirmed: AnyPublisher<Bool, Never> {
+        passwordIsvalid.combineLatest(passwordMatchesConformation)
+            .map { valid, confirmed in
+                valid && confirmed
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var passwordIsvalid: AnyPublisher<Bool, Never> {
+        passwordSubject
+            .map {
+                $0 != "password" && $0.count >= 8
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var passwordMatchesConformation: AnyPublisher<Bool, Never> {
+        passwordSubject.combineLatest(passwordConfirmationSubject)
+            .map { password, conformation in
+                password == conformation
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var emailIsValid: AnyPublisher<Bool, Never> {
+        emailSubject
+            .map { [weak self] in self?.emailIsValid($0) }
+            .replaceNil(with: false)
+            .eraseToAnyPublisher()
     }
     
     //MARK: - Actions

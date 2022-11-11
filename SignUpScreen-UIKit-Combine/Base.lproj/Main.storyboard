@@ -11,10 +11,10 @@
         <scene sceneID="o4l-fc-wQM">
             <objects>
                 <tableViewController id="YDV-5H-dkg" customClass="ViewController" customModule="SignUpScreen_UIKit_Combine" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="43" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="LEJ-x1-KjZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="43" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="LEJ-x1-KjZ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <sections>
                             <tableViewSection headerTitle="ENTER YOUR DETAILS" id="Gdb-hN-inO">
                                 <cells>
@@ -28,9 +28,9 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4de-lS-uiB">
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                                     <connections>
-                                                        <action selector="emailDidChange:" destination="YDV-5H-dkg" eventType="editingDidEnd" id="ai5-AG-ZOC"/>
+                                                        <action selector="emailDidChange:" destination="YDV-5H-dkg" eventType="editingChanged" id="Zwc-p3-Wea"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -52,9 +52,9 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E6q-MS-7pj">
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" textContentType="password"/>
                                                     <connections>
-                                                        <action selector="passwordDidChange:" destination="YDV-5H-dkg" eventType="editingDidEnd" id="xLR-Wb-dai"/>
+                                                        <action selector="passwordDidChange:" destination="YDV-5H-dkg" eventType="editingChanged" id="gQn-dh-JGi"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -76,9 +76,9 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password Confirmation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HrS-M7-cDt">
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" textContentType="password"/>
                                                     <connections>
-                                                        <action selector="passwordConfirmationDidChange:" destination="YDV-5H-dkg" eventType="editingDidEnd" id="q6V-6Y-9z4"/>
+                                                        <action selector="passwordConfirmationDidChange:" destination="YDV-5H-dkg" eventType="editingChanged" id="Lpt-kf-fJc"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -189,8 +189,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
