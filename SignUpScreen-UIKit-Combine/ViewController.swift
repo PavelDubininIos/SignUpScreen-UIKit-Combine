@@ -35,9 +35,19 @@ class ViewController: UITableViewController {
         formIsValid
             .assign(to: \.isEnabled, on: signUpButton)
             .store(in: &cancellables)
+        
+        emailIsValid
+            .map { $0 ? UIColor.label : UIColor.systemRed }
+            .assign(to: \.textColor, on: emailAddressField)
+            .store(in: &cancellables)
+        
+        passwordMatchesConformation
+            .map { $0 ? UIColor.label : UIColor.systemRed }
+            .assign(to: \.textColor, on: passwordConfirmationField)
+            .store(in: &cancellables)
     }
 
-    private func emailIsValid(_ email: String) -> Bool {
+    private func isEmailIsValid(_ email: String) -> Bool {
         email.contains("@") && email.contains(".")
     }
     
@@ -79,7 +89,7 @@ class ViewController: UITableViewController {
     
     private var emailIsValid: AnyPublisher<Bool, Never> {
         emailSubject
-            .map { [weak self] in self?.emailIsValid($0) }
+            .map { [weak self] in self?.isEmailIsValid($0) }
             .replaceNil(with: false)
             .eraseToAnyPublisher()
     }
