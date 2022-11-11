@@ -36,22 +36,22 @@ class ViewController: UITableViewController {
             .assign(to: \.isEnabled, on: signUpButton)
             .store(in: &cancellables)
         
-        emailIsValid
+        setValidColor(field: emailAddressField, publisher: emailIsValid)
+        setValidColor(field: passwordConfirmationField, publisher: passwordValidConfirmed)
+        setValidColor(field: passwordField, publisher: passwordIsvalid)
+    }
+    
+    private func setValidColor<P: Publisher>(field: UITextField, publisher: P)
+    where P.Output == Bool, P.Failure == Never {
+        publisher
             .map { $0 ? UIColor.label : UIColor.systemRed }
-            .assign(to: \.textColor, on: emailAddressField)
-            .store(in: &cancellables)
-        
-        passwordMatchesConformation
-            .map { $0 ? UIColor.label : UIColor.systemRed }
-            .assign(to: \.textColor, on: passwordConfirmationField)
+            .assign(to: \.textColor, on: field)
             .store(in: &cancellables)
     }
 
     private func isEmailIsValid(_ email: String) -> Bool {
         email.contains("@") && email.contains(".")
     }
-    
-
     
     //MARK: - Publishers
     
