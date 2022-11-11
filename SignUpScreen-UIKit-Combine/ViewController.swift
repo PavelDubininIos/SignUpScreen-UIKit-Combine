@@ -46,9 +46,9 @@ class ViewController: UITableViewController {
     //MARK: - Publishers
     
     private var formIsValid: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest(emailIsValid, passwordValidConfirmed)
+        Publishers.CombineLatest3(emailIsValid, passwordValidConfirmed, agreeTermSubject)
             .map {
-                $0.0 && $0.1
+                $0.0 && $0.1 && $0.2
             }
             .eraseToAnyPublisher()
     }

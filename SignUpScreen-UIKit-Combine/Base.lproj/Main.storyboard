@@ -52,7 +52,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E6q-MS-7pj">
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <action selector="passwordDidChange:" destination="YDV-5H-dkg" eventType="editingChanged" id="gQn-dh-JGi"/>
                                                     </connections>
@@ -76,7 +76,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password Confirmation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HrS-M7-cDt">
                                                     <rect key="frame" x="10" y="0.0" width="340" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <action selector="passwordConfirmationDidChange:" destination="YDV-5H-dkg" eventType="editingChanged" id="Lpt-kf-fJc"/>
                                                     </connections>
