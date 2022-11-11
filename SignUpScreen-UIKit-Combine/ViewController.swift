@@ -39,6 +39,12 @@ class ViewController: UITableViewController {
         setValidColor(field: emailAddressField, publisher: emailIsValid)
         setValidColor(field: passwordConfirmationField, publisher: passwordValidConfirmed)
         setValidColor(field: passwordField, publisher: passwordIsvalid)
+        
+        formattedEmailAdress
+            .filter { [unowned self] in $0 != emailSubject.value }
+            .map { $0 as String? }
+            .assign(to: \.text, on: emailAddressField)
+            .store(in: &cancellables)
     }
     
     private func setValidColor<P: Publisher>(field: UITextField, publisher: P)
@@ -60,6 +66,13 @@ class ViewController: UITableViewController {
             .map {
                 $0.0 && $0.1 && $0.2
             }
+            .eraseToAnyPublisher()
+    }
+    
+    private var formattedEmailAdress: AnyPublisher<String, Never> {
+        emailSubject
+            .map { $0.lowercased() }
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .eraseToAnyPublisher()
     }
     
@@ -88,7 +101,7 @@ class ViewController: UITableViewController {
     }
     
     private var emailIsValid: AnyPublisher<Bool, Never> {
-        emailSubject
+        formattedEmailAdress
             .map { [weak self] in self?.isEmailIsValid($0) }
             .replaceNil(with: false)
             .eraseToAnyPublisher()
